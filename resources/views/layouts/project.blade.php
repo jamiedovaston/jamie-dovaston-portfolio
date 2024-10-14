@@ -18,22 +18,35 @@
                     <div id="controls-carousel" class="relative w-full" data-carousel="static">
                         <!-- Carousel wrapper -->
                         @if($project->logos)
-                            <div id="logo-slideshow" class="carousel slide" data-bs-ride="carousel">
-                                <div class="relative mb-4 h-72 overflow-hidden rounded-lg">
+                            <div id="logo-carousel" class="relative w-full" data-carousel="static">
+                                <!-- Carousel wrapper -->
+                                <div class="relative mb-4 min-h-72 overflow-hidden rounded-lg">
                                     @foreach($project->logos as $index => $logo)
-                                        <div class="hidden duration-700 ease-in-out {{ $index === 0 ? 'active' : '' }}">
-                                            <img src="{{ asset('storage/' . $logo) }}" class="absolute left-1/2 top-1/2 block h-full -translate-x-1/2 -translate-y-1/2 dark:hidden" alt="Project Logo">
+                                        <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-1000 ease-in-out" data-carousel-item="{{ $index === 0 ? 'active' : '' }}">
+                                            <img src="{{ asset('storage/' . $logo) }}" class="absolute left-1/2 top-1/2 block h-full -translate-x-1/2 -translate-y-1/2" alt="Project Logo" />
                                         </div>
                                     @endforeach
                                 </div>
-                                <button class="carousel-control-prev" type="button" data-bs-target="#logo-slideshow" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next" type="button" data-bs-target="#logo-slideshow" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                                <!-- Carousel navigation -->
+                                <div class="flex items-center justify-center gap-4">
+                                    <button type="button" class="group flex h-full cursor-pointer items-center justify-center rounded-lg p-1.5 hover:bg-gray-50 focus:outline-none dark:hover:bg-gray-800" data-carousel-prev>
+                                    <span class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                                        <svg class="h-7 w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12l4-4m-4 4 4 4"/>
+                                        </svg>
+                                        <span class="hidden">Previous</span>
+                                    </span>
+                                    </button>
+                                    <span class="text-base font-medium text-gray-500 dark:text-gray-400"><span id="carousel-current-item">1</span> of {{ count($project->logos) }}</span>
+                                    <button type="button" class="group flex h-full cursor-pointer items-center justify-center rounded-lg p-1.5 hover:bg-gray-50 focus:outline-none dark:hover:bg-gray-800" data-carousel-next>
+                                    <span class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                                        <svg class="h-7 w-7" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4"/>
+                                        </svg>
+                                        <span class="hidden">Next</span>
+                                    </span>
+                                    </button>
+                                </div>
                             </div>
                         @endif
                     </div>
