@@ -1,0 +1,69 @@
+    /* Smooth scroll behavior */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Fade-in Animation */
+    @keyframes fade-in {
+        0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    }
+
+    .fade-in {
+        opacity: 0;
+        animation: fade-in 1s forwards;
+        animation-delay: 0.3s;
+    }
+
+    /* Scroll Snap */
+    .snap-container {
+        scroll-snap-type: y mandatory;
+        overflow-y: scroll;
+        height: 100vh;
+    }
+
+    .snap-section {
+        scroll-snap-align: start;
+        height: 100vh;
+    }
+
+    /* Slanted Panel Animation */
+    @keyframes slide-in-left {
+        0% {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 0.2;
+        }
+    }
+
+    .slanted-panel {
+        position: absolute;
+        width: 150%;
+        height: 200%;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: rotate(-10deg);
+        animation: slide-in-left 2s ease-out;
+    }
+
+    /* Adjust the position of multiple panels */
+    .panel-1 {
+        top: -50%;
+        left: -30%;
+    }
+    .panel-2 {
+        top: 0;
+        left: -40%;
+    }
+    .panel-3 {
+        top: 50%;
+        left: -50%;
+    }
