@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class AdminProjectController extends Controller
 {
     public function __construct()
     {
@@ -18,13 +18,13 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view('welcome', compact('projects')); // Change to the 'welcome' view for the homepage
+        return view('admin.projects.index', compact('projects'));
     }
 
     // Show form to create a new project
     public function create()
     {
-        return view('projects.create');
+        return view('admin.projects.create');
     }
 
     // Store a new project in the database
@@ -62,7 +62,7 @@ class ProjectController extends Controller
 
         $project = Project::create($validated);
 
-        return redirect()->route('dashboard.projects.index')->with('success', 'Project added successfully!');
+        return redirect()->route('admin.projects.index')->with('success', 'Project added successfully!');
     }
 
 
@@ -71,10 +71,10 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Validate multiple images
-            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:51200', // Video file validation
+            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:20480000', // Validate multiple images
+            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:512000000', // Video file validation
             'short_description' => 'required|string',
-            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:4096',
+            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:40960000',
             'background_primary_color' => 'nullable|string|max:7', // Hex color code
             'article_color' => 'nullable|string|max:7', // Hex color code
             'software' => 'nullable|array',
@@ -106,7 +106,19 @@ class ProjectController extends Controller
         return redirect()->route('dashboard.projects.index')->with('success', 'Project updated successfully!');
     }
 
+    public function edit(Project $project)
+    {
+        return view('admin.projects.edit', compact('project'));
+    }
 
+    public function destroy(Project $project)
+    {
+        // Delete the project
+        $project->delete();
+
+        // Redirect to the projects index page with a success message
+        return redirect()->route('dashboard.projects.index')->with('success', 'Project deleted successfully!');
+    }
 
     public function show(Project $project)
     {
