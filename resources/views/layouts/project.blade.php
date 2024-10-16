@@ -14,7 +14,8 @@
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 @if(isset($projects) && $projects->isNotEmpty())
                     @foreach($projects as $project)
-                <div class="space-y-4 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
+                <div class="space-y-4 rounded-lg border border-zinc-200 bg-white p-6 shadow-sm dark:border-zinc-700" style="background-color: {{ $project->background_primary_color }};">
+
                     <div id="controls-carousel" class="relative w-full" data-carousel="static">
 
                         <div class="pb-5 flex items-center justify-between gap-4">
@@ -64,7 +65,7 @@
                     </div>
 
                     <div>
-                        <a class="text-lg font-semibold leading-tight text-zinc-900 hover:underline dark:text-white">{!! $project->short_description !!}</a>
+                        <p class="text-lg font-semibold leading-tight text-zinc-900 dark:text-white">{!! $project->short_description !!}</p>
                     </div>
 
                     <div class="flex items-center gap-4">
