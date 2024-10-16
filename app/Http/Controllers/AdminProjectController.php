@@ -31,15 +31,15 @@ class AdminProjectController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048000',
-            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:5120000',
+            'title' => 'required|string',
+            'images.*' => 'nullable|image|mimes:jpg,png,jpeg',
+            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv',
             'short_description' => 'required|string',
-            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:4000096',
-            'background_primary_color' => 'nullable|string|max:7',
-            'article_color' => 'nullable|string|max:7',
+            'background_image' => 'nullable|image|mimes:jpg,png,jpeg',
+            'background_primary_color' => 'nullable|string',
+            'article_color' => 'nullable|string',
             'software' => 'nullable|array',
-            'shortline_description' => 'required|string|max:255',
+            'shortline_description' => 'required|string',
             'body' => 'required|string',
         ]);
 
