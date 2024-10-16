@@ -1,5 +1,4 @@
-
-    <div class="container">
+<x-app-layout>
         <h1>Projects</h1>
 
 
@@ -38,5 +37,4 @@
             @endforeach
             </tbody>
         </table>
-    </div>
-
+</x-app-layout>
