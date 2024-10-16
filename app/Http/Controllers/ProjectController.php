@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use Illuminate\Http\Request;
+use League\CommonMark\CommonMarkConverter;
 
 class ProjectController extends Controller
 {
@@ -29,6 +30,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        $converter = new CommonMarkConverter();
+        $project->body = $converter->convert($project->body);
+
         // Return the project details view
         return view('projects.show', compact('project'));
     }
