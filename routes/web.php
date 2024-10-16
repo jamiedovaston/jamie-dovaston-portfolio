@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminProjectController;
 use App\Http\Controllers\ProjectController;
@@ -13,6 +14,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::post('/upload-image', [ImageUploadController::class, 'store'])->name('image.upload');
 
 // Group routes for authenticated users
 Route::middleware('auth')->group(function () {
