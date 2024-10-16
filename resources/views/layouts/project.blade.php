@@ -64,7 +64,7 @@
                     </div>
 
                     <div>
-                        <a class="text-lg font-semibold leading-tight text-zinc-900 hover:underline dark:text-white">{{ $project->short_description }}</a>
+                        <a class="text-lg font-semibold leading-tight text-zinc-900 hover:underline dark:text-white">{!! $project->short_description !!}</a>
                     </div>
 
                     <div class="flex items-center gap-4">
