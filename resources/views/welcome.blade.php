@@ -12,30 +12,9 @@
 
 <body class="text-white snap-container relative">
 
-<!-- Video Background -->
-<video autoplay muted loop playsinline class="absolute top-1/2 left-1/2 w-auto min-w-full min-h-full max-w-none transform -translate-x-1/2 -translate-y-1/2 z-0">
-    <source src="https://image.overtimehosting.cloud/u/dh5TRP.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+@include("layouts.nav")
 
-
-<div class="relative z-10">
-    <header class="bg-zinc-800 p-4 bg-opacity-60">
-        <div class="container mx-auto flex justify-between items-center">
-            <div class="text-white text-2xl font-bold">
-                <a href="#" class="hover:text-blue-500 transition">Jamie Dovaston</a>
-            </div>
-            <nav class="space-x-6">
-                <a href="/" class="text-white font-medium hover:text-blue-500 transition">Home</a>
-                <a href="/projects" class="text-white font-medium hover:text-blue-500 transition">Projects</a>
-                <a href="/contact" class="text-white font-medium hover:text-blue-500 transition">Contact</a>
-                <a href="/about-me" class="text-white font-medium px-4 py-2 rounded ring-2 ring-blue-800 hover:bg-blue-800 hover:ring-blue-900 transition">
-                    About Me
-                </a>
-            </nav>
-        </div>
-    </header>
-
+<section class="bg-zinc-900 bg-blend-multiply">
     <div class="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div class="mr-auto place-self-center lg:col-span-7">
             <h1 data-key="title" class="lang max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl text-white">Jamie Dovaston</h1>
@@ -48,11 +27,12 @@
             <img src="https://image.overtimehosting.cloud/u/RrfJ62.webp" alt="Jamie Dovaston Image">
         </div>
     </div>
+</section>
 
-    @include("layouts.project")
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
-</div>
+
+@include("layouts.project")
 
 </body>
 </html>

@@ -32,60 +32,67 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'logos.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Validate multiple images
-            'short_description' => 'required|string|max:500',
+            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:51200',
+            'short_description' => 'required|string',
+            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:4096',
+            'background_primary_color' => 'nullable|string|max:7',
+            'article_color' => 'nullable|string|max:7',
+            'software' => 'nullable|array',
+            'shortline_description' => 'required|string|max:255',
             'body' => 'required|string',
-            'finished_at' => 'nullable|date',
-            'unity_game' => 'nullable|file|mimes:zip|max:20480',
-            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:51200', // Validate video file
         ]);
 
-        $logos = [];
-
-        // Handle multiple logo uploads
-        if ($request->hasFile('logos')) {
-            foreach ($request->file('logos') as $logo) {
-                $logoPath = $logo->store('projects/logos', 'public');
-                $logos[] = $logoPath;
+        $images = [];
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $image->store('projects/images', 'public');
+                $images[] = $imagePath;
             }
         }
-        $validated['logos'] = $logos;
+        $validated['images'] = $images;
 
-        // Handle video upload
         if ($request->hasFile('video')) {
             $videoPath = $request->file('video')->store('projects/videos', 'public');
             $validated['video_path'] = $videoPath;
         }
 
-        // Store project with authenticated user's ID
-        $validated['user_id'] = auth()->id();
+        $validated['software'] = $request->input('software');
+        $validated['user_id'] = auth()->id(); // Associate the project with the authenticated user
+
         $project = Project::create($validated);
 
         return redirect()->route('dashboard.projects.index')->with('success', 'Project added successfully!');
     }
 
+
+
     public function update(Request $request, Project $project)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'logos.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Validate multiple images
-            'short_description' => 'required|string|max:500',
+            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Validate multiple images
+            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:51200', // Video file validation
+            'short_description' => 'required|string',
+            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:4096',
+            'background_primary_color' => 'nullable|string|max:7', // Hex color code
+            'article_color' => 'nullable|string|max:7', // Hex color code
+            'software' => 'nullable|array',
+            'shortline_description' => 'required|string|max:255',
             'body' => 'required|string',
-            'finished_at' => 'nullable|date',
-            'unity_game' => 'nullable|file|mimes:zip|max:20480',
-            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:51200', // Validate video file
         ]);
 
-        $logos = $project->logos ?? [];
+        $images = $project->images ?? [];
 
-        // Handle multiple logo uploads
-        if ($request->hasFile('logos')) {
-            foreach ($request->file('logos') as $logo) {
-                $logoPath = $logo->store('projects/logos', 'public');
-                $logos[] = $logoPath;
+        // Handle multiple image uploads
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $image->store('projects/images', 'public');
+                $images[] = $imagePath;
             }
         }
-        $validated['logos'] = $logos;
+
+        $validated['images'] = $images;
 
         // Handle video upload
         if ($request->hasFile('video')) {
@@ -98,6 +105,7 @@ class ProjectController extends Controller
 
         return redirect()->route('dashboard.projects.index')->with('success', 'Project updated successfully!');
     }
+
 
 
     public function show(Project $project)
