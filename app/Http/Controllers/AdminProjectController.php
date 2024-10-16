@@ -32,10 +32,10 @@ class AdminProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:51200',
+            'images.*' => 'nullable|image|mimes:jpg,png,jpeg|max:2048000',
+            'video' => 'nullable|file|mimes:mp4,avi,mov,wmv|max:5120000',
             'short_description' => 'required|string',
-            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:4096',
+            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:4000096',
             'background_primary_color' => 'nullable|string|max:7',
             'article_color' => 'nullable|string|max:7',
             'software' => 'nullable|array',
@@ -62,7 +62,7 @@ class AdminProjectController extends Controller
 
         $project = Project::create($validated);
 
-        return redirect()->route('admin.projects.index')->with('success', 'Project added successfully!');
+        return redirect()->route('dashboard.projects.index')->with('success', 'Project added successfully!');
     }
 
 
