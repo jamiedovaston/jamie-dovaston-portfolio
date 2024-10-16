@@ -12,8 +12,8 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard.projects.create')" :active="request()->routeIs('dashboard')">
-                        Create Project
+                    <x-nav-link :href="route('dashboard.projects.index')" :active="request()->routeIs('dashboard.projects.index')">
+                        Projects
                     </x-nav-link>
                 </div>
 
