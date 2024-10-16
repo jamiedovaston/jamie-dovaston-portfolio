@@ -147,7 +147,7 @@
 
     <script>
         tinymce.init({
-            selector: '#shortline_description', // The textarea ID for the body content
+            selector: '#short_description', // The textarea ID for the body content
             plugins: 'code markdown image imagetools', // Enable Markdown, Code, and Image plugins
             toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code | image',
             menubar: false,
