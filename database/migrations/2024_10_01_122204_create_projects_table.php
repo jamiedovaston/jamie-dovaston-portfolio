@@ -4,33 +4,28 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class CreateProjectsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('logo')->nullable();
-            $table->string('background')->nullable();
+            $table->json('images')->nullable(); // Store multiple image paths in JSON
+            $table->string('video_path')->nullable(); // Optional video path
             $table->text('short_description');
-            $table->json('software_used')->nullable();
-            $table->text('body');
-            $table->timestamps();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('background_image')->nullable(); // Background image path
+            $table->string('background_primary_color')->nullable(); // Hex or RGB code
+            $table->string('article_color')->nullable(); // Hex or RGB code for the article body
+            $table->json('software')->nullable(); // JSON to store selected software
+            $table->string('shortline_description')->nullable(); // Shortline description
+            $table->text('body'); // Markdown content
+            $table->timestamps(); // created_at and updated_at
         });
     }
 
-
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('projects');
     }
-};
+}
