@@ -10,11 +10,13 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'logos', 'short_description', 'body', 'user_id', 'finished_at', 'unity_game_path', 'video_path'
+        'title', 'images', 'video_path', 'short_description', 'background_image',
+        'background_primary_color', 'article_color', 'software', 'shortline_description', 'body', 'user_id'
     ];
 
     protected $casts = [
-        'logos' => 'array',
+        'images' => 'array',
+        'software' => 'array',
     ];
 
     // Define the relationship with the User model
