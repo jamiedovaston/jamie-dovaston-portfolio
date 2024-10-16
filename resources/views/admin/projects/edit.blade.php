@@ -1,4 +1,9 @@
 <x-app-layout>
+
+    <!-- Add this in the <head> section of your Blade template -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
+
     <div class="container">
         <h1>Edit Project</h1>
 
@@ -48,7 +53,7 @@
 
             <div class="mb-3">
                 <label for="short_description" class="form-label">Short Description</label>
-                <textarea name="short_description" id="short_description" class="form-control" required>{{ old('short_description', $project->short_description) }}</textarea>
+                <textarea name="short_description" class="form-control" id="short_description" required>{{ old('short_description', $project->short_description ?? '') }}</textarea><br>
             </div>
 
             <!-- Background Image -->
@@ -96,10 +101,84 @@
 
             <div class="mb-3">
                 <label for="body" class="form-label">Body (Markdown)</label>
-                <textarea name="body" id="body" class="form-control" required>{{ old('body', $project->body) }}</textarea>
+                <textarea name="body" id="body" class="form-control" required>{{ old('body', $project->body ?? '') }}</textarea>
             </div>
+
 
             <button type="submit" class="btn btn-primary">Update Project</button>
         </form>
     </div>
+
+    <script src="https://cdn.tiny.cloud/1/5mavkvwtcts3fsepqjs6w90h8cxexk38jhcpbrj524lrt8dn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#body', // The textarea ID for the body content
+            plugins: 'code markdown image imagetools', // Enable Markdown, Code, and Image plugins
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code | image',
+            menubar: false,
+            height: 400,
+            images_upload_url: '/upload-image', // Endpoint for handling image uploads
+            automatic_uploads: true,
+            images_upload_handler: function (blobInfo, success, failure) {
+                let formData = new FormData();
+                formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+                fetch('/upload-image', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include the CSRF token
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result && result.location) {
+                            success(result.location);
+                        } else {
+                            failure('Upload failed');
+                        }
+                    })
+                    .catch(() => {
+                        failure('Upload failed');
+                    });
+            }
+        });
+    </script>
+
+    <script>
+        tinymce.init({
+            selector: '#shortline_description', // The textarea ID for the body content
+            plugins: 'code markdown image imagetools', // Enable Markdown, Code, and Image plugins
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | code | image',
+            menubar: false,
+            height: 400,
+            images_upload_url: '/upload-image', // Endpoint for handling image uploads
+            automatic_uploads: true,
+            images_upload_handler: function (blobInfo, success, failure) {
+                let formData = new FormData();
+                formData.append('file', blobInfo.blob(), blobInfo.filename());
+
+                fetch('/upload-image', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}' // Include the CSRF token
+                    }
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result && result.location) {
+                            success(result.location);
+                        } else {
+                            failure('Upload failed');
+                        }
+                    })
+                    .catch(() => {
+                        failure('Upload failed');
+                    });
+            }
+        });
+    </script>
+
+
 </x-app-layout>

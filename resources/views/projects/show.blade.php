@@ -16,7 +16,7 @@
         <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
             <div class="flex flex-col lg:flex-row justify-between lg:items-center">
                 <div class="flex items-center space-x-3 text-zinc-500 dark:text-zinc-400 text-base mb-2 lg:mb-0">
-                    <span><time class="font-normal text-zinc-500 dark:text-zinc-400" pubdate class="uppercase" datetime="2022-03-08" title="August 3rd, 2022">August 3, 2022, 2:20am EDT</time></span>
+                    Published on {{ $project->created_at->format('F d, Y') }}
                 </div>
             </div>
 
@@ -72,8 +72,6 @@
 <div class="project-details">
     <h1>{{ $project->title }}</h1>
     <p>Created by: {{ $project->user ? $project->user->name : 'Unknown' }}</p>
-    <p>Created on: {{ $project->created_at->format('F d, Y') }}</p>
-    <p>Finished on: {{ $project->finished_at ? $project->finished_at->format('F d, Y') : 'Not specified' }}</p>
 
     @if($project->logos)
         <div id="logo-slideshow" class="carousel slide" data-bs-ride="carousel">
