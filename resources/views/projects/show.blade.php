@@ -3,7 +3,7 @@
 @section('content')
 
 
-<main class="pb-16 lg:pb-24 bg-white dark:bg-zinc-900 antialiased">
+<main class="pb-16 lg:pb-24 bg-zinc-900 antialiased">
     <header class="bg-[url('https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/background.png')] w-full h-[460px] xl:h-[537px] bg-no-repeat bg-cover bg-center bg-blend-darken relative">
         <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
         <div class="absolute top-20 left-1/2 px-4 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2 xl:px-0">
@@ -12,10 +12,10 @@
             <p class="text-lg font-normal text-zinc-300">Before going digital, you might scribbling down some ideas in a sketchbook.</p>
         </div>
     </header>
-    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-white dark:bg-zinc-800 rounded xl:-m-32 xl:p-9 xl:mx-auto">
-        <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 rounded xl:-m-32 xl:p-9 xl:mx-auto">
+        <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert">
             <div class="flex flex-col lg:flex-row justify-between lg:items-center">
-                <div class="flex items-center space-x-3 text-zinc-500 dark:text-zinc-400 text-base mb-2 lg:mb-0">
+                <div class="flex items-center space-x-3 text-zinc-400 text-base mb-2 lg:mb-0">
                     Published on {{ $project->created_at->format('F d, Y') }}
                 </div>
             </div>
@@ -26,15 +26,15 @@
             <div class="xl:w-[336px] sticky top-6">
                 <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
                 <div class="mb-12">
-                    <h4 class="mb-4 text-sm font-bold text-zinc-900 dark:text-white uppercase">Latest news</h4>
+                    <h4 class="mb-4 text-sm font-bold text-white uppercase">Latest news</h4>
                     <div class="mb-6 flex items-center">
                         <a href="#" class="shrink-0">
                             <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-1.png" class="mr-4 max-w-full w-24 h-24 rounded-lg" alt="Image 1">
                         </a>
                         <div>
-                            <h5 class="mb-2 text-lg font-bold leading-tight dark:text-white text-zinc-900">Our first office</h5>
-                            <p class="mb-2 text-zinc-500 dark:text-zinc-400">Over the past year, Volosoft has undergone changes.</p>
-                            <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-blue-600 dark:text-blue-500 hover:no-underline">
+                            <h5 class="mb-2 text-lg font-bold leading-tight text-white">Our first office</h5>
+                            <p class="mb-2 text-zinc-400">Over the past year, Volosoft has undergone changes.</p>
+                            <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-blue-500 hover:no-underline">
                                 Read in 9 minutes
                             </a>
                         </div>
@@ -44,9 +44,9 @@
                             <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-2.png" class="mr-4 max-w-full w-24 h-24 rounded-lg" alt="Image 2">
                         </a>
                         <div>
-                            <h5 class="mb-2 text-lg font-bold leading-tight dark:text-white text-zinc-900">Enterprise Design tips</h5>
-                            <p class="mb-2 text-zinc-500 dark:text-zinc-400">Over the past year, Volosoft has undergone changes.</p>
-                            <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-blue-600 dark:text-blue-500 hover:no-underline">
+                            <h5 class="mb-2 text-lg font-bold leading-tight text-white">Enterprise Design tips</h5>
+                            <p class="mb-2 text-zinc-400">Over the past year, Volosoft has undergone changes.</p>
+                            <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-blue-500 hover:no-underline">
                                 Read in 14 minutes
                             </a>
                         </div>
@@ -56,9 +56,9 @@
                             <img src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/articles/image-3.png" class="mr-4 max-w-full w-24 h-24 rounded-lg" alt="Image 3">
                         </a>
                         <div>
-                            <h5 class="mb-2 text-lg font-bold leading-tight dark:text-white text-zinc-900">Partnered up with Google</h5>
-                            <p class="mb-2 text-zinc-500 dark:text-zinc-400">Over the past year, Volosoft has undergone changes.</p>
-                            <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-blue-600 dark:text-blue-500 hover:no-underline">
+                            <h5 class="mb-2 text-lg font-bold leading-tight text-white">Partnered up with Google</h5>
+                            <p class="mb-2 text-zinc-400">Over the past year, Volosoft has undergone changes.</p>
+                            <a href="#" class="inline-flex items-center font-medium underline underline-offset-4 text-blue-500 hover:no-underline">
                                 Read in 9 minutes
                             </a>
                         </div>
