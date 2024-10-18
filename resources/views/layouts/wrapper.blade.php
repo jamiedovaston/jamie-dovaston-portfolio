@@ -10,23 +10,6 @@
     @vite(['resources/css/app.css','resources/js/app.js'])
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
 
-    <style>
-        .rainbow-divider {
-            height: 8px;
-            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
-        }
-        .sidebar {
-            width: 300px;
-            background-color: #1F2937; /* Tailwind CSS Zinc-800 */
-        }
-        .sidebar .section-title {
-            border-bottom: 1px solid #374151; /* Tailwind CSS Zinc-600 */
-        }
-        .sidebar .link-btn {
-            background-color: #374151; /* Tailwind CSS Zinc-600 */
-        }
-    </style>
-
 </head>
 
 

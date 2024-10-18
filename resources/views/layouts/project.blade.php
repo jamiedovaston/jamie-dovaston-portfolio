@@ -28,8 +28,8 @@
                                 <div class="relative mb-4 min-h-72 overflow-hidden rounded-lg">
                                     <div class="image-gallery">
                                         @foreach($project->images as $index => $image)
-                                            <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-1000 ease-in-out" data-carousel-item="{{ $index === 0 ? 'active' : '' }}">
-                                                <img src="{{ asset('storage/' . $image) }}" class="w-full" alt="Project Image {{ $index + 1 }}" />
+                                            <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-10 ease-in-out" data-carousel-item>
+                                                <img src="{{ asset('storage/' . $image) }}" class="absolute left-1/2 top-1/2 block h-full -translate-x-1/2 -translate-y-1/2 dark:hidden" alt="Project Image {{ $index + 1 }}" />
                                             </div>
                                         @endforeach
                                     </div>
