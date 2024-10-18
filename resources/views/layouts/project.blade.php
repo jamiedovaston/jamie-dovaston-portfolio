@@ -24,12 +24,12 @@
 
                         <!-- Carousel wrapper -->
                         @if(!empty($project->images) && is_array($project->images))
-                            <div id="logo-carousel" class="relative w-full" data-carousel="static">
+                            <div id="animation-carousel" class="relative w-full" data-carousel="slide">
                                 <!-- Carousel wrapper -->
                                 <div class="relative mb-4 min-h-72 overflow-hidden rounded-lg">
                                     <div class="image-gallery">
                                         @foreach($project->images as $index => $image)
-                                            <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-10 ease-in-out" data-carousel-item>
+                                            <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-700 ease-in-out" data-carousel-item>
                                                 <img src="{{ asset('storage/' . $image) }}" class="absolute left-1/2 top-1/2 block h-full -translate-x-1/2 -translate-y-1/2 dark:hidden" alt="Project Image {{ $index + 1 }}" />
                                             </div>
                                         @endforeach
