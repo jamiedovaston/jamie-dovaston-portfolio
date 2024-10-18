@@ -30,10 +30,11 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        $background_image = $project->background_image;
         $converter = new CommonMarkConverter();
         $project->body = $converter->convert($project->body);
 
         // Return the project details view
-        return view('projects.show', compact('project'));
+        return view('projects.show', compact('project', 'background_image'));
     }
 }
