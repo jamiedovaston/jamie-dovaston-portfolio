@@ -12,13 +12,18 @@
     <label for="title">Title:</label>
     <input type="text" name="title" id="title" required><br>
 
-    <!-- Multiple Images Upload -->
-    <label for="images">Project Images (Multiple)</label>
-    <input type="file" name="images[]" id="images" multiple><br>
+    <!-- Multiple Image URLs Input -->
+    <label for="images">Image URLs (Multiple)</label>
+    <div id="image-url-container">
+        <input type="text" name="images[]" class="form-control mb-2" placeholder="Enter image URL">
+    </div>
+    <button type="button" id="add-image-url" class="btn btn-secondary mt-2">Add Another Image URL</button>
+    <br><br>
 
-    <!-- Video Upload -->
-    <label for="video">Project Video (Optional)</label>
-    <input type="file" name="video" id="video"><br>
+    <!-- Video URL Input -->
+    <label for="video">Video URL</label>
+    <input type="text" name="video" id="video" class="form-control" placeholder="Enter video URL">
+
 
     <label for="short_description">Short Description:</label>
     <textarea name="short_description" class="form-control" id="short_description" required>{{ old('short_description', $project->short_description ?? '') }}</textarea><br>
@@ -90,5 +95,20 @@
             }
         });
     </script>
+
+    <script>
+        document.getElementById('add-image-url').addEventListener('click', function () {
+            // Create a new input element
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'images[]';
+            newInput.classList.add('form-control', 'mb-2');
+            newInput.placeholder = 'Enter image URL';
+
+            // Append the new input element to the container
+            document.getElementById('image-url-container').appendChild(newInput);
+        });
+    </script>
+
 
 </x-app-layout>
