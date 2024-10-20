@@ -1,4 +1,4 @@
-<header class="bg-zinc-800 p-4 bg-opacity-60">
+<header class="bg-zinc-800 p-4 bg-opacity-60 z-20 relative">
     <div class="container mx-auto flex justify-between items-center">
         <div class="text-white text-2xl font-bold">
             <a href="#" class="hover:text-blue-500 transition">Jamie Dovaston</a>
