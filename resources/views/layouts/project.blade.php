@@ -11,78 +11,48 @@
         <div class="max-w-5xl mx-auto mt-8 space-y-16 sm:mt-12 lg:mt-16">
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                @if(isset($projects) && $projects->isNotEmpty())
-                    @foreach($projects as $index => $project)
-                        <a id="hover-button-{{ $index }}" href="{{ route('projects.show', $project) }}" class="block group">
-                            <div class="space-y-4 rounded-lg border border-zinc-700 bg-white p-6 shadow-sm" style="background-color: {{ $project->background_primary_color }};">
-                                <div id="controls-carousel" class="relative w-full" data-carousel="static">
-                                    <div class="pb-5 flex items-center justify-between gap-4">
-                                        <p class="text-2xl font-extrabold leading-tight text-white">{{ $project->title }}</p>
-                                    </div>
+            @if(isset($projects) && $projects->isNotEmpty())
+                @foreach($projects as $project)
+                    <a href="{{ route('projects.show', $project) }}" class="block">
+                        <div class="space-y-4 rounded-lg border border-zinc-700 bg-white p-6 shadow-sm" style="background-color: {{ $project->background_primary_color }};">
+                            <div id="controls-carousel" class="relative w-full" data-carousel="static">
+                                <div class="pb-5 flex items-center justify-between gap-4">
+                                    <p class="text-2xl font-extrabold leading-tight text-white">{{ $project->title }}</p>
+                                </div>
 
-                                    <!-- Carousel wrapper -->
-                                    @if(!empty($project->images) && is_array($project->images))
-                                        <div id="animation-carousel-{{ $index }}" class="relative w-full" data-carousel="slide">
-                                            <!-- Carousel wrapper with 16:9 aspect ratio -->
-                                            <div class="relative mb-4 overflow-hidden rounded-lg" style="padding-top: 56.25%;"> <!-- 16:9 ratio -->
-                                                <div class="absolute inset-0 image-gallery">
-                                                    @foreach($project->images as $imageIndex => $image)
-                                                        <div class="{{ $imageIndex === 0 ? 'block' : 'hidden' }} duration-700 ease-in-out" data-carousel-item>
-                                                            <img src="{{ $image }}" class="absolute inset-0 w-full h-full object-cover" alt="Project Image {{ $imageIndex + 1 }}" />
-                                                        </div>
-                                                    @endforeach
-                                                </div>
+                                <!-- Carousel wrapper -->
+                                @if(!empty($project->images) && is_array($project->images))
+                                    <div id="animation-carousel" class="relative w-full" data-carousel="slide">
+                                        <!-- Carousel wrapper with 16:9 aspect ratio -->
+                                        <div class="relative mb-4 overflow-hidden rounded-lg" style="padding-top: 56.25%;"> <!-- 16:9 ratio (9/16 = 0.5625 or 56.25%) -->
+                                            <div class="absolute inset-0 image-gallery">
+                                                @foreach($project->images as $index => $image)
+                                                    <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-700 ease-in-out" data-carousel-item>
+                                                        <img src="{{ $image }}" class="absolute inset-0 w-full h-full object-cover" alt="Project Image {{ $index + 1 }}" />
+                                                    </div>
+                                                @endforeach
                                             </div>
                                         </div>
-                                    @else
-                                        <p>No images available for this project.</p>
-                                    @endif
-
-                                    <!-- Video Content (Hidden by default) -->
-                                    <div id="hover-video-{{ $index }}" class="absolute inset-0 w-full h-full hidden">
-                                        <video class="w-full h-full object-cover" controls>
-                                            <source src="{{ $project->video }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
                                     </div>
-                                </div>
+                                @else
+                                    <p>No images available for this project.</p>
+                                @endif
 
-                                <div>
-                                    <p class="text-lg font-semibold leading-tight text-white">{!! $project->short_description !!}</p>
-                                </div>
                             </div>
-                        </a>
-                    @endforeach
-                @else
-                    <p>No projects available.</p>
-                @endif
+
+                            <div>
+                                <p class="text-lg font-semibold leading-tight text-white">{!! $project->short_description !!}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
+            @else
+                <p>No projects available.</p>
+            @endif
             </div>
-
-            <script>
-                document.querySelectorAll('[id^="hover-button-"]').forEach((hoverButton, index) => {
-                    const imageCarousel = document.getElementById(`animation-carousel-${index}`);
-                    const hoverVideo = document.getElementById(`hover-video-${index}`);
-
-                    // Show video on hover and hide the images
-                    hoverButton.addEventListener('mouseenter', () => {
-                        imageCarousel.classList.add('hidden');
-                        hoverVideo.classList.remove('hidden');
-                    });
-
-                    // Show images again when not hovering over the button
-                    hoverButton.addEventListener('mouseleave', () => {
-                        hoverVideo.classList.add('hidden');
-                        imageCarousel.classList.remove('hidden');
-                    });
-                });
-            </script>
-
-
 
         </div>
     </div>
-
-
 
     <!-- Auto-slide JavaScript -->
     <script>
