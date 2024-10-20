@@ -2,12 +2,12 @@
 
 @section('content')
 
-    @include("layouts.nav")
+@include("layouts.nav")
 
-
-<main class="pb-16 lg:pb-24 bg-zinc-900 antialiased">
-    <div class="relative w-full h-[460px] xl:h-[537px] bg-[url('{{ asset('storage/' . $background_image) }}')] bg-no-repeat bg-cover bg-center bg-blend-darken">
-        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+<main class="pb-16 lg:pb-24 bg-zinc-900 antialiased min-h-screen" style="background-color: {{ $project->background_primary_color }};">
+    <div class="relative w-full h-[460px] xl:h-[537px]">
+            <!-- Blurred Background -->
+            <div class="absolute top-0 left-0 w-full h-full bg-[url('{{ $background_image }}')] bg-no-repeat bg-cover bg-center bg-blend-darken blur-3xl"></div>
 
         <div class="absolute top-20 left-1/2 mx-auto w-full max-w-screen-xl -translate-x-1/2 xl:top-1/2 xl:-translate-y-1/2">
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
@@ -62,14 +62,8 @@
 
 
 
-    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 rounded xl:-m-32 xl:p-9 xl:mx-auto">
+    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 rounded xl:-m-32 xl:p-9 xl:mx-auto" style="background-color: {{ $project->article_color }};>
         <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert">
-            <div class="flex flex-col lg:flex-row justify-between lg:items-center">
-                <div class="flex items-center space-x-3 text-zinc-400 text-base mb-2 lg:mb-0">
-                    Published on {{ $project->created_at->format('F d, Y') }}
-                </div>
-            </div>
-
             <div class="py-5 text-lg font-normal text-white">{!! ($project->body) !!}</div>
         </article>
         <aside class="hidden xl:block" aria-labelledby="sidebar-label">
