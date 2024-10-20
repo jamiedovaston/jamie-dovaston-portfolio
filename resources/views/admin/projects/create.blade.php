@@ -24,12 +24,14 @@
     <label for="video">Video URL</label>
     <input type="text" name="video" id="video" class="form-control" placeholder="Enter video URL">
 
+    <!-- Background Image URL Input -->
+    <label for="background_image">Background Image URL</label>
+    <input type="text" name="background_image" id="background_image" class="form-control" placeholder="Enter background image URL">
+    <br>
+
 
     <label for="short_description">Short Description:</label>
     <textarea name="short_description" class="form-control" id="short_description" required>{{ old('short_description', $project->short_description ?? '') }}</textarea><br>
-
-    <label for="background_image">Background Image</label>
-    <input type="file" name="background_image" id="background_image"><br>
 
     <label for="background_primary_color">Background Primary Colour:</label>
     <input type="color" name="background_primary_color" id="background_primary_color"><br>
