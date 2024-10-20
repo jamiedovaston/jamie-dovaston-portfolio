@@ -32,11 +32,11 @@ class AdminProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string',
-            'images' => 'nullable|array', // Validate array of image URLs
-            'images.*' => 'nullable|url', // Validate each URL in the array
-            'video' => 'nullable|url', // Validate video URL
+            'images' => 'nullable|array',
+            'images.*' => 'nullable|url',
+            'video' => 'nullable|url',
             'short_description' => 'required|string',
-            'background_image' => 'nullable|image|mimes:jpg,png,jpeg',
+            'background_image' => 'nullable|url', // Validate as a URL
             'background_primary_color' => 'nullable|string',
             'article_color' => 'nullable|string',
             'software' => 'nullable|array',
@@ -44,7 +44,7 @@ class AdminProjectController extends Controller
             'body' => 'required|string',
         ]);
 
-        $validated['user_id'] = auth()->id(); // Associate the project with the authenticated user
+        $validated['user_id'] = auth()->id();
 
         $project = Project::create($validated);
 
@@ -55,11 +55,11 @@ class AdminProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
-            'images' => 'nullable|array', // Validate array of image URLs
-            'images.*' => 'nullable|url', // Validate each URL in the array
-            'video' => 'nullable|url', // Validate video URL
+            'images' => 'nullable|array',
+            'images.*' => 'nullable|url',
+            'video' => 'nullable|url',
             'short_description' => 'required|string',
-            'background_image' => 'nullable|image|mimes:jpg,png,jpeg|max:40960000',
+            'background_image' => 'nullable|url', // Validate as a URL
             'background_primary_color' => 'nullable|string|max:7',
             'article_color' => 'nullable|string|max:7',
             'software' => 'nullable|array',
