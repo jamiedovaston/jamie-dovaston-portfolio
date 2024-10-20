@@ -31,6 +31,21 @@ Route::middleware('auth')->group(function () {
     });
 });
 
+use App\Http\Controllers\AboutMeController;
+
+// Public route for showing the "About Me" page
+Route::get('/about-me', [AboutMeController::class, 'show'])->name('about_me.show');
+
+// Group routes under the 'admin' prefix for authenticated users
+Route::middleware('auth')->group(function () {
+    // About Me management routes
+    Route::get('/about-me/edit', [AboutMeController::class, 'edit'])->name('about_me.edit');
+    Route::post('/about-me/update', [AboutMeController::class, 'update'])->name('about_me.update');
+});
+
+
+
+
 Route::get('/', [ProjectController::class, 'index'])->name('home');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
