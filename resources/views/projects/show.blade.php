@@ -13,10 +13,6 @@
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
                 <!-- Text Content -->
                 <div class="px-4 xl:px-0">
-                <span class="block mb-4 text-zinc-300">
-                    Published by
-                    <a href="#" class="font-semibold text-white hover:underline">{{ $project->user ? $project->user->name : 'Unknown' }}</a>
-                </span>
                     <h1 class="mb-4 max-w-4xl text-2xl font-extrabold leading-none text-white sm:text-3xl lg:text-4xl">{{ $project->title }}</h1>
                     <div class="text-lg font-normal text-zinc-300">{!! $project->shortline_description !!}</div>
                 </div>
@@ -62,7 +58,7 @@
 
 
 
-    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 rounded xl:-m-32 xl:p-9 xl:mx-auto" style="background-color: {{ $project->article_color }};">
+    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 xl:-m-32 xl:p-9 xl:mx-auto" style="background-color: {{ $project->article_color }};">
         <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert">
             <div class="py-5 text-lg font-normal text-white">{!! ($project->body) !!}</div>
         </article>
