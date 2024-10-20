@@ -22,32 +22,43 @@
                 <input type="text" name="title" id="title" class="form-control" value="{{ old('title', $project->title) }}" required>
             </div>
 
-            <!-- Multiple Image URLs Input -->
-            <label for="images">Image URLs (Multiple)</label>
-            <div id="image-url-container">
-                <input type="text" name="images[]" class="form-control mb-2" placeholder="Enter image URL">
+            <!-- Background Image URL -->
+            <div class="mb-3">
+                <label for="background_image" class="form-label">Background Image URL</label>
+                <input type="text" name="background_image" id="background_image" class="form-control" value="{{ $project->background_image }}" placeholder="Enter background image URL">
+                @if($project->background_image)
+                    <p class="mt-2">Current Background Image URL: <a href="{{ $project->background_image }}" target="_blank">{{ $project->background_image }}</a></p>
+                @endif
             </div>
-            <button type="button" id="add-image-url" class="btn btn-secondary mt-2">Add Another Image URL</button>
-            <br><br>
 
-            <!-- Video URL Input -->
-            <label for="video">Video URL</label>
-            <input type="text" name="video" id="video" class="form-control" placeholder="Enter video URL">
+            <!-- Image URLs -->
+            <div class="mb-3">
+                <label for="images" class="form-label">Image URLs (Multiple)</label>
+                <div id="image-url-container">
+                    @if($project->images && is_array($project->images))
+                        @foreach($project->images as $index => $image)
+                            <input type="text" name="images[]" class="form-control mb-2" value="{{ $image }}" placeholder="Enter image URL">
+                            <p class="text-sm text-muted">Current Image URL {{ $index + 1 }}: <a href="{{ $image }}" target="_blank">{{ $image }}</a></p>
+                        @endforeach
+                    @else
+                        <input type="text" name="images[]" class="form-control mb-2" placeholder="Enter image URL">
+                    @endif
+                </div>
+                <button type="button" id="add-image-url" class="btn btn-secondary mt-2">Add Another Image URL</button>
+            </div>
 
-
+            <!-- Video URL -->
+            <div class="mb-3">
+                <label for="video" class="form-label">Video URL</label>
+                <input type="text" name="video" id="video" class="form-control" value="{{ $project->video_path }}" placeholder="Enter video URL">
+                @if($project->video_path)
+                    <p class="mt-2">Current Video URL: <a href="{{ $project->video_path }}" target="_blank">{{ $project->video_path }}</a></p>
+                @endif
+            </div>
 
             <div class="mb-3">
                 <label for="short_description" class="form-label">Short Description</label>
                 <textarea name="short_description" class="form-control" id="short_description" required>{{ old('short_description', $project->short_description ?? '') }}</textarea><br>
-            </div>
-
-            <!-- Background Image -->
-            <div class="mb-3">
-                <label for="background_image" class="form-label">Background Image</label>
-                <input type="file" name="background_image" id="background_image" class="form-control">
-                @if($project->background_image)
-                    <img src="{{ asset('storage/' . $project->background_image) }}" alt="Current Background" width="100" class="mt-2">
-                @endif
             </div>
 
             <!-- Colors -->
