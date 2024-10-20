@@ -24,4 +24,10 @@ class Project extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Get route key name for title instead of ID in URLs
+    public function getRouteKeyName()
+    {
+        return 'title';
+    }
 }
