@@ -1,5 +1,4 @@
-
-    <div class="container">
+<x-app-layout>
         <h1>Projects</h1>
 
 
@@ -25,7 +24,7 @@
             @foreach($projects as $project)
                 <tr>
                     <td>{{ $project->title }}</td>
-                    <td>{{ $project->short_description }}</td>
+                    <td>{!! $project->short_description !!}</td>
                     <td>
                         <a href="{{ route('dashboard.projects.edit', $project) }}" class="btn btn-warning">Edit</a>
                         <form action="{{ route('dashboard.projects.destroy', $project) }}" method="POST" style="display: inline-block;">
@@ -38,5 +37,4 @@
             @endforeach
             </tbody>
         </table>
-    </div>
-
+</x-app-layout>
