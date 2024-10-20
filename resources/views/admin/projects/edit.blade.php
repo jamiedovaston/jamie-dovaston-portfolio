@@ -22,34 +22,19 @@
                 <input type="text" name="title" id="title" class="form-control" value="{{ old('title', $project->title) }}" required>
             </div>
 
-            <!-- Multiple Images Upload -->
-            <div class="mb-3">
-                <label for="images" class="form-label">Project Images (Multiple)</label>
-                <input type="file" name="images[]" id="images" class="form-control" multiple>
-                @if($project->images)
-                    <div class="mt-2">
-                        <p>Current Images:</p>
-                        @foreach($project->images as $image)
-                            <img src="{{ asset('storage/' . $image) }}" alt="Current Image" width="100" class="mt-2">
-                        @endforeach
-                    </div>
-                @endif
+            <!-- Multiple Image URLs Input -->
+            <label for="images">Image URLs (Multiple)</label>
+            <div id="image-url-container">
+                <input type="text" name="images[]" class="form-control mb-2" placeholder="Enter image URL">
             </div>
+            <button type="button" id="add-image-url" class="btn btn-secondary mt-2">Add Another Image URL</button>
+            <br><br>
 
-            <!-- Video Upload -->
-            <div class="mb-3">
-                <label for="video" class="form-label">Project Video (Optional)</label>
-                <input type="file" name="video" id="video" class="form-control">
-                @if($project->video_path)
-                    <div class="mt-2">
-                        <p>Current Video:</p>
-                        <video width="320" height="240" controls>
-                            <source src="{{ asset('storage/' . $project->video_path) }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                @endif
-            </div>
+            <!-- Video URL Input -->
+            <label for="video">Video URL</label>
+            <input type="text" name="video" id="video" class="form-control" placeholder="Enter video URL">
+
+
 
             <div class="mb-3">
                 <label for="short_description" class="form-label">Short Description</label>
@@ -177,6 +162,20 @@
                         failure('Upload failed');
                     });
             }
+        });
+    </script>
+
+    <script>
+        document.getElementById('add-image-url').addEventListener('click', function () {
+            // Create a new input element
+            const newInput = document.createElement('input');
+            newInput.type = 'text';
+            newInput.name = 'images[]';
+            newInput.classList.add('form-control', 'mb-2');
+            newInput.placeholder = 'Enter image URL';
+
+            // Append the new input element to the container
+            document.getElementById('image-url-container').appendChild(newInput);
         });
     </script>
 
