@@ -4,6 +4,8 @@
 
 @include("layouts.nav")
 
+<body class="overflow-y-scroll no-scrollbar" style="background-color: {{ $project->background_primary_color }};">
+
 <main class="pb-16 lg:pb-24 bg-zinc-900 antialiased min-h-screen" style="background-color: {{ $project->background_primary_color }};">
     <div class="relative w-full h-[460px] xl:h-[537px]">
             <!-- Blurred Background -->
