@@ -1,4 +1,4 @@
-<section class="bg-zinc-900 antialiased">
+<section class="bg-zinc-900 antialiased min-h-screen">
     <div class="max-w-screen-xl px-4 py-8 mx-auto lg:px-6 sm:py-16 lg:py-24">
         <div class="max-w-2xl mx-auto space-y-4 text-center">
             <h2 class="text-3xl font-extrabold leading-tight tracking-tight text-white sm:text-4xl">
@@ -12,9 +12,10 @@
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             @if(isset($projects) && $projects->isNotEmpty())
+
                 @foreach($projects as $project)
                     <a href="{{ route('projects.show', $project) }}" class="block">
-                        <div class="space-y-4 rounded-lg border border-zinc-700 bg-white p-6 shadow-sm" style="background-color: {{ $project->background_primary_color }};">
+                        <div class="space-y-4 rounded-2xl border-4 border-zinc-700 bg-white p-6 shadow-sm" style="background-color: {{ $project->background_primary_color }}; border-color: {{ $project->article_color }};">
                             <div id="controls-carousel" class="relative w-full" data-carousel="static">
                                 <div class="pb-5 flex items-center justify-between gap-4">
                                     <p class="text-2xl font-extrabold leading-tight text-white">{{ $project->title }}</p>
