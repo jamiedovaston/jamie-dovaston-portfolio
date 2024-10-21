@@ -49,8 +49,8 @@
 
             <!-- Video URL -->
             <div class="mb-3">
-                <label for="video" class="form-label">Video URL</label>
-                <input type="text" name="video" id="video_path" class="form-control" value="{{ $project->video_path }}" placeholder="Enter video URL">
+                <label for="video_path" class="form-label">Video URL</label>
+                <input type="text" name="video_path" id="video_path" class="form-control" value="{{ $project->video_path }}" placeholder="Enter video URL">
                 @if($project->video_path)
                     <p class="mt-2">Current Video URL: <a href="{{ $project->video_path }}" target="_blank">{{ $project->video_path }}</a></p>
                 @endif
