@@ -21,8 +21,8 @@
     <br><br>
 
     <!-- Video URL Input -->
-    <label for="video">Video URL</label>
-    <input type="text" name="video" id="video" class="form-control" placeholder="Enter video URL">
+    <label for="video_path">Video URL</label>
+    <input type="text" name="video_path" id="video_path" class="form-control" placeholder="Enter video URL">
 
     <!-- Background Image URL Input -->
     <label for="background_image">Background Image URL</label>
