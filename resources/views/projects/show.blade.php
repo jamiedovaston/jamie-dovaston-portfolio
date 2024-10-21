@@ -45,9 +45,6 @@
         </div>
     </div>
 
-
-
-
     <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 min-h-screen xl:-m-32 xl:p-9 xl:mx-auto" style="background-color: {{ $project->article_color }};">
         <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert">
             <div class="py-5 text-lg font-normal text-white">{!! ($project->body) !!}</div>
