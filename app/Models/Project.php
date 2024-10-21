@@ -10,7 +10,7 @@ class Project extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'images', 'video', 'short_description', 'background_image',
+        'title', 'images', 'video_path', 'short_description', 'background_image',
         'background_primary_color', 'article_color', 'software', 'shortline_description', 'body', 'user_id'
     ];
 

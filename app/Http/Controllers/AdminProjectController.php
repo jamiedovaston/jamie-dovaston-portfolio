@@ -57,7 +57,7 @@ class AdminProjectController extends Controller
             'title' => 'required|string|max:255',
             'images' => 'nullable|array',
             'images.*' => 'nullable|url',
-            'video' => 'nullable|url',
+            'video_path' => 'nullable|url',
             'short_description' => 'required|string',
             'background_image' => 'nullable|url', // Validate as a URL
             'background_primary_color' => 'nullable|string|max:7',
