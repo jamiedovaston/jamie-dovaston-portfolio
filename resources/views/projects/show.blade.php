@@ -13,10 +13,6 @@
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8 items-center">
                 <!-- Text Content -->
                 <div class="px-4 xl:px-0">
-                <span class="block mb-4 text-zinc-300">
-                    Published by
-                    <a href="#" class="font-semibold text-white hover:underline">{{ $project->user ? $project->user->name : 'Unknown' }}</a>
-                </span>
                     <h1 class="mb-4 max-w-4xl text-2xl font-extrabold leading-none text-white sm:text-3xl lg:text-4xl">{{ $project->title }}</h1>
                     <div class="text-lg font-normal text-zinc-300">{!! $project->shortline_description !!}</div>
                 </div>
@@ -24,35 +20,23 @@
                 <!-- Carousel Content -->
                 <div class="w-full max-w-md mx-auto" id="animation-carousel" data-carousel="slide">
                     <div class="relative h-[360px] overflow-hidden">
-                        <!-- Carousel item 1 -->
-                        <div class="absolute inset-0 z-10 -translate-x-full transition-all duration-700 ease-in-out" data-carousel-item="">
-                            <div class="rounded-lg border border-zinc-200 bg-zinc-50 p-6 shadow-sm dark:border-zinc-700 dark:bg-zinc-800">
-                                <a href="#">
-                                    <img class="mx-auto mb-4 h-48 dark:hidden md:mb-6" src="https://image.overtimehosting.cloud/u/CNtAty.png" alt="keyboard" />
-                                    <img class="mx-auto mb-4 hidden h-48 dark:block md:mb-6" src="https://image.overtimehosting.cloud/u/CNtAty.png" alt="keyboard" />
-                                </a>
+                        <!-- Carousel wrapper -->
+                        @if(!empty($project->images) && is_array($project->images))
+                            <div id="animation-carousel" class="relative w-full" data-carousel="slide">
+                                <!-- Carousel wrapper with 16:9 aspect ratio -->
+                                <div class="relative mb-4 overflow-hidden rounded-lg" style="padding-top: 56.25%;"> <!-- 16:9 ratio (9/16 = 0.5625 or 56.25%) -->
+                                    <div class="absolute inset-0 image-gallery">
+                                        @foreach($project->images as $index => $image)
+                                            <div class="{{ $index === 0 ? 'block' : 'hidden' }} duration-700 ease-in-out" data-carousel-item>
+                                                <img src="{{ $image }}" class="absolute inset-0 w-full h-full object-cover" alt="Project Image {{ $index + 1 }}" />
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Carousel Navigation -->
-                    <div class="mt-4 flex items-center justify-center md:mt-6">
-                        <button type="button" class="group mr-4 flex h-full cursor-pointer items-center justify-center focus:outline-none" data-carousel-prev="">
-                        <span class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
-                            <svg aria-hidden="true" class="h-7 w-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M7.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="sr-only">Previous</span>
-                        </span>
-                        </button>
-                        <button type="button" class="group flex h-full cursor-pointer items-center justify-center focus:outline-none" data-carousel-next="">
-                        <span class="text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
-                            <svg aria-hidden="true" class="h-7 w-7" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                            </svg>
-                            <span class="sr-only">Next</span>
-                        </span>
-                        </button>
+                        @else
+                            <p>No images available for this project.</p>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -62,7 +46,7 @@
 
 
 
-    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 rounded xl:-m-32 xl:p-9 xl:mx-auto" style="background-color: {{ $project->article_color }};">
+    <div class="flex relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 min-h-screen xl:-m-32 xl:p-9 xl:mx-auto" style="background-color: {{ $project->article_color }};">
         <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert">
             <div class="py-5 text-lg font-normal text-white">{!! ($project->body) !!}</div>
         </article>
@@ -112,19 +96,5 @@
         </aside>
     </div>
 </main>
-
-
-
-    <!-- Video Display -->
-    @if($project->video_path)
-        <div class="project-video mt-3">
-            <video controls width="100%">
-                <source src="{{ asset('storage/' . $project->video_path) }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        </div>
-    @endif
-
-
 
 @endsection
