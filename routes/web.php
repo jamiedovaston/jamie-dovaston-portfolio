@@ -43,6 +43,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/about-me/update', [AboutMeController::class, 'update'])->name('about_me.update');
 });
 
+use App\Http\Controllers\contactController;
+
+// Public route for showing the "About Me" page
+Route::get('/contact', [contactController::class, 'show'])->name('contact.show');
+
+// Group routes under the 'admin' prefix for authenticated users
+Route::middleware('auth')->group(function () {
+    // About Me management routes
+    Route::get('/contact/edit', [contactController::class, 'edit'])->name('contact.edit');
+    Route::post('/contact/update', [contactController::class, 'update'])->name('contact.update');
+});
 
 
 
