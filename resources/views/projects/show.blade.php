@@ -7,7 +7,7 @@
     <body class="overflow-y-scroll no-scrollbar" style="background-color: {{ $project->background_primary_color }};">
 
     <main class="pb-16 lg:pb-24 bg-zinc-900 antialiased min-h-screen" style="background-color: {{ $project->background_primary_color }};">
-        <div class="relative w-full h-[460px] xl:h-[537px]">
+        <div class="relative w-full h-[460px] xl:h-[460px]">
             <!-- Blurred Background -->
             <div class="absolute top-0 left-0 w-full h-full bg-[url('{{ $background_image }}')] bg-no-repeat bg-cover bg-center bg-blend-darken blur-3xl"></div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <!-- Flex container for article and sidebar -->
-        <div class="flex flex-col xl:flex-row relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 xl:-m-32 xl:p-9 xl:mx-auto rounded-3xl" style="background-color: {{ $project->article_color }};">
+        <div class="flex flex-col xl:flex-row relative z-20 justify-between p-6 mt-8 xl:mt-0 mx-4 max-w-screen-xl bg-zinc-800 xl:p-10 xl:mx-auto rounded-3xl" style="background-color: {{ $project->article_color }};">
             <!-- Article Section -->
             <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert bg-black bg-opacity-15 rounded-2xl mb-6 xl:mb-0">
                 <div class="py-5 text-lg font-normal text-white p-5">{!! ($project->body) !!}</div>
