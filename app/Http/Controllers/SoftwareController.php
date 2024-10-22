@@ -12,17 +12,17 @@ class SoftwareController extends Controller
     public function index()
     {
         $software = Software::all();
-        return view('dashboard.software.index', compact('software'));
+        return view('admin.software.index', compact('software'));
     }
 
     public function create()
     {
-        return view('dashboard.software.create');
+        return view('admin.software.create');
     }
 
     public function edit(Software $software)
     {
-        return view('dashboard.software.edit', compact('software'));
+        return view('admin.software.edit', compact('software'));
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class SoftwareController extends Controller
 
         Software::create($validated);
 
-        return redirect()->route('dashboard.software.index')->with('success', 'Software added successfully.');
+        return redirect()->route('admin.software.index')->with('success', 'Software added successfully.');
     }
 
     public function update(Request $request, Software $software)
@@ -50,7 +50,7 @@ class SoftwareController extends Controller
 
         $software->update($validated);
 
-        return redirect()->route('dashboard.software.index')->with('success', 'Software updated successfully.');
+        return redirect()->route('admin.software.index')->with('success', 'Software updated successfully.');
     }
 
 
@@ -58,6 +58,6 @@ class SoftwareController extends Controller
     {
         $software->delete();
 
-        return redirect()->route('dashboard.software.index')->with('success', 'Software deleted successfully.');
+        return redirect()->route('admin.software.index')->with('success', 'Software deleted successfully.');
     }
 }

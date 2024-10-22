@@ -16,4 +16,10 @@ class Software extends Model
         'image_url',
     ];
 
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_software');
+    }
+
+
 }
