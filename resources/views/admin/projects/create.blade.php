@@ -1,7 +1,7 @@
 <x-app-layout>
 
     <!-- Add the TinyMCE editor script in the <head> section of your Blade template -->
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.tiny.cloud/1/5mavkvwtcts3fsepqjs6w90h8cxexk38jhcpbrj524lrt8dn/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
     <section class="bg-white dark:bg-gray-900">
         <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">

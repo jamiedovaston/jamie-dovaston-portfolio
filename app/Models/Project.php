@@ -24,6 +24,8 @@ class Project extends Model
         'software' => 'array',
     ];
 
+
+
     // Define the relationship with the User model
     public function user()
     {
