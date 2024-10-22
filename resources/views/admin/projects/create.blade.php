@@ -56,25 +56,18 @@
                         <input type="color" name="article_color" id="article_color" class="w-full p-2.5 rounded-lg bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600">
                     </div>
 
-                    <!-- Software Selection -->
-                    <div class="sm:col-span-2">
-                        <label for="software" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Software Used</label>
-                        <select name="software[]" id="software" multiple class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white">
-                            <option value="Unity">Unity</option>
-                            <option value="Unreal Engine">Unreal Engine</option>
-                            <option value="C#">C#</option>
-                            <option value="C++">C++</option>
-                            <option value="SQL">SQL</option>
-                            <option value="PHP">PHP</option>
-                            <option value="NodeJS">NodeJS</option>
-                            <option value="Python">Python</option>
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="TypeScript">TypeScript</option>
-                            <option value="Tailwind CSS">Tailwind CSS</option>
-                            <option value="React">React</option>
-                            <option value="Laravel">Laravel</option>
+                    <div class="mb-3">
+                        <label for="software" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Software Used</label>
+                        <select name="software[]" id="software" class="block w-full px-3 py-2 text-base text-gray-900 placeholder-gray-500 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" multiple>
+                            @foreach($allSoftware as $software)
+                                <option value="{{ $software->id }}" class="text-gray-900 dark:text-white">
+                                    {{ $software->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
+
+
 
                     <!-- Shortline Description -->
                     <div class="sm:col-span-2">
