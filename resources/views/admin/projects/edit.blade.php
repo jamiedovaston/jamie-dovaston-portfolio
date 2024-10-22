@@ -74,15 +74,16 @@
                         </div>
                     </div>
 
-                    <!-- Software Selection -->
-                    <div class="mb-4">
-                        <label for="software" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Software Used</label>
-                        <select name="software[]" id="software" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:text-white" multiple>
-                            @php
-                                $softwareOptions = ['Unity', 'Unreal Engine', 'C#', 'C++', 'SQL', 'PHP', 'NodeJS', 'Python', 'JavaScript', 'TypeScript', 'Tailwind CSS', 'React', 'Laravel'];
-                            @endphp
-                            @foreach($softwareOptions as $software)
-                                <option value="{{ $software }}" @if(in_array($software, old('software', $project->software ?? []))) selected @endif>{{ $software }}</option>
+                    <div class="mb-3">
+                        <label for="software" class="form-label">Software Used</label>
+                        <select name="software[]" id="software" class="form-select" multiple>
+                            @foreach($allSoftware as $software)
+                                <option value="{{ $software->id }}"
+                                        @if(isset($project) && (is_array($project->software) ? in_array($software->id, $project->software) : $project->software->contains($software->id)))
+                                            selected
+                                    @endif>
+                                    {{ $software->name }}
+                                </option>
                             @endforeach
                         </select>
                     </div>

@@ -7,7 +7,7 @@
     <body class="overflow-y-scroll no-scrollbar" style="background-color: {{ $project->background_primary_color }};">
 
     <main class="pb-16 lg:pb-24 bg-zinc-900 antialiased min-h-screen" style="background-color: {{ $project->background_primary_color }};">
-        <div class="relative w-full h-[460px] xl:h-[537px]">
+        <div class="relative w-full h-[460px] xl:h-[460px]">
             <!-- Blurred Background -->
             <div class="absolute top-0 left-0 w-full h-full bg-[url('{{ $background_image }}')] bg-no-repeat bg-cover bg-center bg-blend-darken blur-3xl"></div>
 
@@ -46,7 +46,7 @@
         </div>
 
         <!-- Flex container for article and sidebar -->
-        <div class="flex flex-col xl:flex-row relative z-20 justify-between p-6 -m-36 mx-4 max-w-screen-xl bg-zinc-800 xl:-m-32 xl:p-9 xl:mx-auto rounded-3xl" style="background-color: {{ $project->article_color }};">
+        <div class="flex flex-col xl:flex-row relative z-20 justify-between p-6 mt-8 xl:mt-0 mx-4 max-w-screen-xl bg-zinc-800 xl:p-10 xl:mx-auto rounded-3xl" style="background-color: {{ $project->article_color }};">
             <!-- Article Section -->
             <article class="xl:w-[828px] w-full max-w-none format format-sm sm:format-base lg:format-lg format-blue format-invert bg-black bg-opacity-15 rounded-2xl mb-6 xl:mb-0">
                 <div class="py-5 text-lg font-normal text-white p-5">{!! ($project->body) !!}</div>
@@ -58,17 +58,21 @@
                     <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
                     <div class="mb-12">
                         <h4 class="mb-4 text-sm font-bold text-white uppercase">Software Used</h4>
-                        <div class="mb-6 flex items-center border-4 rounded-3xl" style="background-color: darkslategray; border-color: darkcyan;">
-                            <img src="https://jamie-portfolio-zipline.xrdxno.easypanel.host/u/pIBxWE.png" class="p-1.5 h-12">
-                            <p class="text-lg font-bold leading-tight text-white">Unity Engine</p>
-                        </div>
-                        <div class="mb-6 flex items-center border-4 rounded-3xl" style="background-color: darkslategray; border-color: darkcyan;">
-                            <img src="https://jamie-portfolio-zipline.xrdxno.easypanel.host/u/pIBxWE.png" class="p-1.5 h-12">
-                            <p class="text-lg font-bold leading-tight text-white">Another Tool</p>
-                        </div>
+                        @foreach($software as $softwareItem)
+                            <div class="mb-6 flex items-center border-4 rounded-3xl"
+                                 style="background-color: {{ $softwareItem->primary_color ?? 'darkslategray' }}; border-color: {{ $softwareItem->secondary_color ?? 'darkcyan' }};">
+                                @if($softwareItem->image_url)
+                                    <img src="{{ $softwareItem->image_url }}" alt="{{ $softwareItem->name }}" class="p-1.5 h-12">
+                                @else
+                                    <img src="https://via.placeholder.com/48" alt="No Image Available" class="p-1.5 h-12">
+                                @endif
+                                <p class="text-lg font-bold leading-tight text-white ml-3">{{ $softwareItem->name }}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </aside>
+
         </div>
     </main>
 
