@@ -36,7 +36,7 @@ class SoftwareController extends Controller
 
         Software::create($validated);
 
-        return redirect()->route('admin.software.index')->with('success', 'Software added successfully.');
+        return redirect()->route('dashboard.software.index')->with('success', 'Software added successfully.');
     }
 
     public function update(Request $request, Software $software)
@@ -50,7 +50,7 @@ class SoftwareController extends Controller
 
         $software->update($validated);
 
-        return redirect()->route('admin.software.index')->with('success', 'Software updated successfully.');
+        return redirect()->route('dashboard.software.index')->with('success', 'Software updated successfully.');
     }
 
 
