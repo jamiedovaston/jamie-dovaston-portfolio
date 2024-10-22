@@ -58,17 +58,21 @@
                     <h3 id="sidebar-label" class="sr-only">Sidebar</h3>
                     <div class="mb-12">
                         <h4 class="mb-4 text-sm font-bold text-white uppercase">Software Used</h4>
-                        <div class="mb-6 flex items-center border-4 rounded-3xl" style="background-color: darkslategray; border-color: darkcyan;">
-                            <img src="https://jamie-portfolio-zipline.xrdxno.easypanel.host/u/pIBxWE.png" class="p-1.5 h-12">
-                            <p class="text-lg font-bold leading-tight text-white">Unity Engine</p>
-                        </div>
-                        <div class="mb-6 flex items-center border-4 rounded-3xl" style="background-color: darkslategray; border-color: darkcyan;">
-                            <img src="https://jamie-portfolio-zipline.xrdxno.easypanel.host/u/pIBxWE.png" class="p-1.5 h-12">
-                            <p class="text-lg font-bold leading-tight text-white">Another Tool</p>
-                        </div>
+                        @foreach($software as $softwareItem)
+                            <div class="mb-6 flex items-center border-4 rounded-3xl"
+                                 style="background-color: {{ $softwareItem->primary_color ?? 'darkslategray' }}; border-color: {{ $softwareItem->secondary_color ?? 'darkcyan' }};">
+                                @if($softwareItem->image_url)
+                                    <img src="{{ $softwareItem->image_url }}" alt="{{ $softwareItem->name }}" class="p-1.5 h-12">
+                                @else
+                                    <img src="https://via.placeholder.com/48" alt="No Image Available" class="p-1.5 h-12">
+                                @endif
+                                <p class="text-lg font-bold leading-tight text-white ml-3">{{ $softwareItem->name }}</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </aside>
+
         </div>
     </main>
 
