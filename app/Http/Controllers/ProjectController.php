@@ -3,16 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Software;
 use Illuminate\Http\Request;
 use League\CommonMark\CommonMarkConverter;
 
 class ProjectController extends Controller
 {
-    /**
-     * Display a listing of the projects on the welcome page.
-     *
-     * @return \Illuminate\View\View
-     */
     public function index()
     {
         // Fetch all projects from the database
@@ -22,19 +18,20 @@ class ProjectController extends Controller
         return view('welcome', compact('projects'));
     }
 
-    /**
-     * Show the details of a specific project.
-     *
-     * @param  \App\Models\Project  $project
-     * @return \Illuminate\View\View
-     */
     public function show(Project $project)
     {
         $background_image = $project->background_image;
         $converter = new CommonMarkConverter();
         $project->body = $converter->convert($project->body);
 
-        // Return the project details view
-        return view('projects.show', compact('project', 'background_image'));
+        // Retrieve the software details based on the IDs stored in the project
+        $softwareIds = $project->software; // Assuming this is an array of software IDs
+        $software = \App\Models\Software::whereIn('id', $softwareIds)->get();
+
+        // Pass the retrieved data to the view
+        return view('projects.show', compact('project', 'background_image', 'software'));
     }
+
+
+
 }

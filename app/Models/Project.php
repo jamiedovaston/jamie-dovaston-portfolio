@@ -14,6 +14,11 @@ class Project extends Model
         'background_primary_color', 'article_color', 'software', 'shortline_description', 'body', 'user_id'
     ];
 
+    public function software()
+    {
+        return $this->belongsToMany(Software::class, 'project_software', 'project_id', 'software_id');
+    }
+
     protected $casts = [
         'images' => 'array',
         'software' => 'array',
