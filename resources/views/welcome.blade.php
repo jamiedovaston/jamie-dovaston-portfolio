@@ -44,5 +44,7 @@
 
 @include("layouts.project")
 
+@include("layouts.footer")
+
 </body>
 </html>
