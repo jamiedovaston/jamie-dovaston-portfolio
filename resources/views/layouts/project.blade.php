@@ -8,7 +8,7 @@
                 This is what i've created so far.
             </p>
         </div>
-        <div class="max-w-5xl mx-auto mt-8 space-y-16 sm:mt-12 lg:mt-16">
+        <div class="max-w-10xl mx-auto mt-8 space-y-16 sm:mt-12 lg:mt-16">
 
             <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 @if(isset($projects) && $projects->isNotEmpty())
