@@ -11,7 +11,8 @@ class ProjectController extends Controller
     public function index()
     {
         // Fetch all projects from the database
-        $projects = Project::all();
+        $projects = Project::with('software')->get();
+
 
         // Return the projects view and pass the projects data
         return view('projects.projects', compact('projects'));
