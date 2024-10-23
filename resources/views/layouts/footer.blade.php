@@ -2,25 +2,13 @@
     <div class="xl:flex xl:items-center xl:justify-between">
         <ul class="flex flex-wrap justify-center items-center">
             <li>
-                <a href="#" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">About</a>
+                <a href="/contact" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Contact</a>
             </li>
             <li>
-                <a href="#" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Become an Author</a>
+                <a href="/about-me" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">About Me</a>
             </li>
             <li>
-                <a href="#" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Pricing</a>
-            </li>
-            <li>
-                <a href="#" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Help</a>
-            </li>
-            <li>
-                <a href="#" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Terms & Conditions</a>
-            </li>
-            <li>
-                <a href="#" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Cookies</a>
-            </li>
-            <li>
-                <a href="#" class="inline-block mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Contact</a>
+                <a href="https://jamie-portfolio-zipline.xrdxno.easypanel.host/u/uAZiIp.pdf" class="inline-block mr-6 mb-4 text-zinc-900 underline hover:no-underline dark:text-white">Download my CV</a>
             </li>
         </ul>
     </div>
