@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="text-white snap-container relative">
+<body class="bg-zinc-900 snap-container relative">
 
 @include("layouts.nav")
 
