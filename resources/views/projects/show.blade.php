@@ -78,4 +78,6 @@
         </div>
     </main>
 
+    @include("layouts.footer")
 @endsection
+
