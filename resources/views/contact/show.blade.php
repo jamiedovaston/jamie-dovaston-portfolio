@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="text-white snap-container relative">
+<body class="bg-zinc-900 relative">
 
 @include("layouts.nav")
 
@@ -32,9 +32,6 @@
                     </div>
                 </div>
                 <dl>
-                    <dt class="mb-2 font-semibold leading-none text-zinc-900 dark:text-white">About Me</dt>
-                    <dd class="mb-4 font-light text-zinc-500 sm:mb-5 dark:text-zinc-400">{!! $contact->content ?? 'Contact information will be added soon.' !!}
-                    </dd>
                     <dt class="mb-2 font-semibold leading-none text-zinc-900 dark:text-white">Socials</dt>
                     <dd class="inline-flex items-center mb-4 space-x-1 sm:mb-5">
                         <a href="https://jamie-dovaston.itch.io/" data-tooltip-target="tooltip-facebook" class="p-2 text-zinc-500 rounded-lg hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-700">

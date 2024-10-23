@@ -33,7 +33,7 @@ class AboutMeController extends Controller
         $aboutMe->content = $request->input('content');
         $aboutMe->save();
 
-        return redirect()->route('about_me.edit')->with('success', 'Content updated successfully!');
+        return redirect()->route('admin.about_me.edit')->with('success', 'Content updated successfully!');
     }
 
 
