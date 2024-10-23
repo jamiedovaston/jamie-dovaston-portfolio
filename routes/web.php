@@ -70,8 +70,11 @@ Route::prefix('dashboard')->name('dashboard.')->group(function () {
     Route::delete('/software/{software}', [SoftwareController::class, 'destroy'])->name('software.destroy');
 });
 
+// routes/web.php
+Route::get('/projects', [ProjectController::class, 'index']);
 
-Route::get('/', [ProjectController::class, 'index'])->name('home');
+
+Route::get('/', [ProjectController::class, 'welcome']);
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects.show');
 
 require __DIR__.'/auth.php';
