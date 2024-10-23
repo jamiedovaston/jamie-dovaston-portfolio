@@ -8,7 +8,7 @@
             </div>
         @endif
 
-        <form action="{{ route('about_me.update') }}" method="POST">
+        <form action="{{ route('dashboard.about_me.update') }}" method="POST">
             @csrf
 
             <div class="mb-3">
