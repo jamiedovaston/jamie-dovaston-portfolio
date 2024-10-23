@@ -31,7 +31,7 @@
                 </address>
                 <h1 class="mb-4 text-3xl font-extrabold leading-tight text-zinc-900 lg:mb-6 lg:text-4xl dark:text-white">About me</h1>
             </header>
-            <div class="lead">{!! \Illuminate\Support\Str::markdown($aboutMe->content) !!}</div>
+            <div class="dark:text-white">{!! \Illuminate\Support\Str::markdown($aboutMe->content) !!}</div>
         </article>
     </div>
 </main>
