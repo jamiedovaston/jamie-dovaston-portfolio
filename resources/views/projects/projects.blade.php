@@ -38,7 +38,10 @@
 
                                     <!-- Carousel wrapper -->
                                     @if(!empty($project->images) && is_array($project->images))
-                                        <div id="animation-carousel" class="relative w-full" data-carousel="slide">
+                                        @php
+                                            $carouselId = 'carousel-' . $loop->index;
+                                        @endphp
+                                        <div id="animation-carousel" class="relative w-full animation-carousel" data-carousel="slide">
                                             <!-- Carousel wrapper with 16:9 aspect ratio -->
                                             <div class="relative mb-4 overflow-hidden rounded-lg" style="padding-top: 56.25%;"> <!-- 16:9 ratio (9/16 = 0.5625 or 56.25%) -->
                                                 <div class="absolute inset-0 image-gallery">
